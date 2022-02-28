@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "411911342100",
+    "project_id": "proyectom13ivanherrero",
+    "storage_bucket": "proyectom13ivanherrero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411911342100:android:392fc808dd43af9fbbff01",
+        "android_client_info": {
+          "package_name": "com.googlecalendarmoodlekt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411911342100-kpjvojjh1vf63l5eclfnripkias7clh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzII814OdINE9_07DkXjwAfHM19F1sk3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411911342100-kpjvojjh1vf63l5eclfnripkias7clh6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
