@@ -7,6 +7,7 @@
     tools:context=".AuthActivity">
 
     <LinearLayout
+        android:id="@+id/authLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -23,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             tools:ignore="TouchTargetSizeCheck" />
 
@@ -36,8 +37,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Contraseña"
+            android:hint="@string/contraseña"
             android:inputType="textEmailAddress"
+            android:password="true"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Space
@@ -55,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorPrimary"
-                android:text="Registrar"
+                android:text="@string/registrar"
                 android:textColor="@android:color/white"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
 
@@ -69,8 +71,26 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorPrimaryDark"
-                android:text="Acceder" />
+                android:text="@string/acceder"
+                android:textColor="@color/colorPrimaryDark" />
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <Button
+            android:id="@+id/googleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:drawableStart="@mipmap/google_logo"
+            android:paddingStart="16dp"
+            android:text="@string/google"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimaryDark" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

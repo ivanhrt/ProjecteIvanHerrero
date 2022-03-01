@@ -50,7 +50,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
                 android:text="Cerrar sesión"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
     </LinearLayout>
