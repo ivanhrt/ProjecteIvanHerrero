@@ -23,11 +23,12 @@ import kotlinx.android.synthetic.main.activity_auth.*
 class AuthActivity : AppCompatActivity() {
 
     private val GOOGLE_SIGN_IN = 100
+    private val default_web_client_id = "411911342100-kpjvojjh1vf63l5eclfnripkias7clh6.apps.googleusercontent.com"
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         //Splash
-        Thread.sleep(2000)
+        Thread.sleep(1000)
         //setTheme(R.style.AppTheme)
 
         super.onCreate(savedInstanceState)
@@ -106,7 +107,7 @@ class AuthActivity : AppCompatActivity() {
 
             val googleConf : GoogleSignInOptions =
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken(default_web_client_id)
                 .requestEmail().build()
 
             val googleClient :GoogleSignInClient = GoogleSignIn.getClient(this, googleConf)
