@@ -6,4 +6,6 @@
     <string name="contraseña">Contraseña</string>
     <string name="registrar">Registrar</string>
     <string name="acceder">Acceder</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="calendar">Calendario</string>
 </resources>

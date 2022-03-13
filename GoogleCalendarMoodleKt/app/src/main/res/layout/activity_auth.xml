@@ -38,8 +38,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/contraseña"
-            android:inputType="textEmailAddress"
-            android:password="true"
+            android:inputType="textPassword"
             tools:ignore="TouchTargetSizeCheck" />
 
         <Space
@@ -56,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorPrimary"
+                app:backgroundTint="@color/colorPrimary"
                 android:text="@string/registrar"
                 android:textColor="@android:color/white"
                 tools:ignore="TextContrastCheck,TextContrastCheck" />
@@ -70,9 +69,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@color/colorPrimaryDark"
+                app:backgroundTint="@color/colorPrimaryDark"
                 android:text="@string/acceder"
-                android:textColor="@color/colorPrimaryDark" />
+                android:textColor="#90A4AE" />
 
         </LinearLayout>
 
@@ -83,13 +82,12 @@
         <Button
             android:id="@+id/googleButton"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:drawableStart="@mipmap/google_logo"
-            android:paddingStart="16dp"
+            android:layout_height="58dp"
+            android:drawableLeft="@drawable/google_logo_25x25v2"
             android:text="@string/google"
             android:textAlignment="textStart"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            app:backgroundTint="@android:color/white" />
 
     </LinearLayout>
 
