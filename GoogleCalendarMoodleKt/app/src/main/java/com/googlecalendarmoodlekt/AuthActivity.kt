@@ -133,6 +133,7 @@ class AuthActivity : AppCompatActivity() {
         val homeIntent :Intent = Intent(this, HomeActivity::class.java).apply {
             putExtra("email", email)
             putExtra("provider", provider.name)
+
         }
         startActivity(homeIntent)
     }
