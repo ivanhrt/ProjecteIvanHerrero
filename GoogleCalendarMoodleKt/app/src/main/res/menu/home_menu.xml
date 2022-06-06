@@ -3,9 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_moodle"
+        android:onClick="onContextItemSelected"
+        android:title="@string/moodle"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_logout"
         android:onClick="onContextItemSelected"
         android:title="@string/logout"
         app:showAsAction="never" />
+
+
 
 </menu>

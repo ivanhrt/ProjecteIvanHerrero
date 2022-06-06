@@ -23,7 +23,7 @@
             android:id="@+id/emailTextView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Email" />
+            android:text="@string/email" />
 
         <Space
             android:layout_width="match_parent"
@@ -33,7 +33,7 @@
             android:id="@+id/providerTextView"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Proveedor" />
+            android:text="@string/proveedor" />
 
         <Space
             android:layout_width="match_parent"
@@ -46,11 +46,11 @@
 
             <Button
                 android:id="@+id/logOutButton"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
-                android:text="Cerrar sesión"
+                android:text="@string/cerrar_sesi_n"
                 android:textColor="@color/colorPrimaryDark" />
 
         </LinearLayout>
@@ -63,7 +63,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingClass">
 
         <WebView
             android:id="@+id/web_calendar"

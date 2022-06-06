@@ -7,36 +7,28 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.webkit.WebChromeClient
 import android.webkit.WebResourceRequest
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_auth.*
+import kotlinx.android.synthetic.main.activity_home.swipeRefresh
+import kotlinx.android.synthetic.main.activity_moodle.*
 
 
-enum class ProviderType {
-    BASIC,
-    GOOGLE
-}
+class MoodleActivity : AppCompatActivity() {
 
 
-class HomeActivity : AppCompatActivity() {
-
-    //Private
-
-    private val URL_BASE = "https://calendar.google.com/calendar/u/0/gp?hl=es#~calendar:view=m"
-
-
+    private val URL_BASE = "https://www.vidalibarraquer.net/moodle/calendar/view.php?view=month"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_moodle)
+        title = "Moodle ViB"
 
-        //Setup
+        //Mantener sesion activa
         val bundle :Bundle? = intent.extras
         val email: String? = bundle?.getString("email")
         val provider: String? = bundle?.getString("provider")
@@ -47,19 +39,22 @@ class HomeActivity : AppCompatActivity() {
         prefs.putString("email",email)
         prefs.putString("provider",provider)
         prefs.apply()
-        //Refresh
+
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
 
         swipeRefresh.setOnRefreshListener {
-            web_calendar.reload()
+            web_moodle.reload()
         }
 
-        //WebView setup
+        //WebView
 
-        web_calendar.webChromeClient = object : WebChromeClient() {
+        web_moodle.webChromeClient = object : WebChromeClient() {
 
         }
 
-        web_calendar.webViewClient = object : WebViewClient() {
+        web_moodle.webViewClient = object : WebViewClient() {
 
             override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
                 return false
@@ -74,54 +69,51 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-        //Cargar web view con la url
-        val settings = web_calendar.settings
+
+
+        //Cargar web e iniciar sesión
+        val settings = web_moodle.settings
         settings.javaScriptEnabled = true
+        web_moodle.loadUrl(URL_BASE)
 
-        web_calendar.loadUrl(URL_BASE)
 
     }
 
 
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.home_menu,menu)
-        return super.onCreateOptionsMenu(menu)
-    }
+    override fun onBackPressed() {
+        if (web_moodle.canGoBack()){
+            web_moodle.goBack()
+        }
+        else{
+            val homeIntent :Intent = Intent(this, HomeActivity::class.java).apply {
+                putExtra("email", getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE).getString("email",""))
+                putExtra("provider", getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE).getString("provider",""))
 
-    override fun onContextItemSelected(item: MenuItem): Boolean {
-        title = getString(R.string.calendar)
-        when(item.itemId){
-            //Borrado de datos
-            R.id.action_logout ->{
-                val prefs: SharedPreferences.Editor = getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE).edit()
-                prefs.clear()
-                prefs.apply()
-                FirebaseAuth.getInstance().signOut()
-
-                startActivity(Intent(this,AuthActivity::class.java))
             }
-            R.id.action_moodle ->{
-                val moodleIntent :Intent = Intent(this, MoodleActivity::class.java).apply {
+            startActivity(homeIntent)
+        }
+
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                val homeIntent :Intent = Intent(this, HomeActivity::class.java).apply {
                     putExtra("email", getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE).getString("email",""))
                     putExtra("provider", getSharedPreferences(getString(R.string.prefs_file), MODE_PRIVATE).getString("provider",""))
 
                 }
-                startActivity(moodleIntent)
+                startActivity(homeIntent)
             }
         }
-        return super.onContextItemSelected(item)
+        return super.onOptionsItemSelected(item)
     }
 
-    override fun onBackPressed() {
-        if (web_calendar.canGoBack()){
-            web_calendar.goBack()
-        }
-        else{
-            finishAffinity()
-            finish()
-        }
-
+    override  fun onCreateOptionsMenu(menu: Menu): Boolean {
+        super.onCreateOptionsMenu(menu)
+        return true
     }
 
 }
