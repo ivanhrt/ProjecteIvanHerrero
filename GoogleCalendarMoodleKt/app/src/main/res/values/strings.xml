@@ -7,5 +7,8 @@
     <string name="registrar">Registrar</string>
     <string name="acceder">Acceder</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="moodle">Añadir Calendario Moodle</string>
     <string name="calendar">Calendario</string>
+    <string name="proveedor">Proveedor</string>
+    <string name="cerrar_sesi_n">Cerrar sesión</string>
 </resources>
